@@ -9,9 +9,9 @@ const ops = {
 
 const Calculator = () => {  
     const [state, setState] = useState({ num: 0, op: "+", res: 0 });
-    const changNum =  (num) => setState({ ...state, num });
-    const resetNum = () => changNum(0);
-    const getChangeNum = (num) => () => changNum(state.num * 10 + num);
+    
+    const reset = () => setState({ ...state, res: 0, num: 0 });
+    const getChangeNum = (num) => () =>  setState({ ...state, num: state.num * 10 + num});
     const getChangeOp = (op) => () => setState({
         res: ops[state.op](state.res, state.num),
         num: 0,
@@ -40,7 +40,7 @@ const Calculator = () => {
             <button onClick = { getChangeOp("*") }> * </button>
           </div>
           <div>
-            <button onClick = { resetNum }> C </button>
+            <button onClick = { reset }> C </button>
             <button onClick = { getChangeNum(0) }> 0 </button>
             <button onClick = { getChangeOp("/") }> / </button>
           </div>
