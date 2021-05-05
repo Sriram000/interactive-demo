@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 
+const ops = {
+    "+": (num1,num2) => num1 + num2, 
+    "-": (num1,num2) => num1 - num2, 
+    "*": (num1,num2) => num1 * num2, 
+    "/": (num1,num2) => num1 / num2, 
+};
+
 const Calculator = () => {  
-    const [state, setState] = useState({ num: 0, op: "", res: 0 });
+    const [state, setState] = useState({ num: 0, op: "+", res: 0 });
     const changNum =  (num) => setState({ ...state, num });
     const resetNum = () => changNum(0);
     const getChangeNum = (num) => () => changNum(state.num * 10 + num);
-    const getChangeOp = (op) => () => {
-
-        setState({
-            res: add(state.res, state.num),
-            num: 0,
-            op: op,
-        });
-
-    }
-
-    const add = (num1, num2) => num1 + num2;
- 
+    const getChangeOp = (op) => () => setState({
+        res: ops[state.op](state.res, state.num),
+        num: 0,
+        op: op,
+    });
+  
     return (
         <div>
           <p> Result:{ state.res } Num:{ state.num } Op:{ state.op } </p>
