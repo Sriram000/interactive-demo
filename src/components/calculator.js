@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import Buttons from './buttons';
 import { buttonStyle } from './styles';
 
+const style = {
+  ...buttonStyle,
+  backgroundColor: "red",
+  color: "white",
+};
+
+
 const Calculator = () => {  
     const [state, setState] = useState({ num: 0, op: "+", res: 0 });
     const context = {state, setState};
@@ -16,7 +23,7 @@ const Calculator = () => {
           <div>{ Buttons(context, [7, 8, 9, '*']) }</div>
           <div>
             <button
-              style = { buttonStyle }
+              style = { style }
               onClick = { reset }> C </button>
             { Buttons(context, [0, '%', '/']) }
           </div>
