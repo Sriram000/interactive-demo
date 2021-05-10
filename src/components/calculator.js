@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Buttons from './buttons';
+import { buttonStyle } from './styles';
 
 const Calculator = () => {  
     const [state, setState] = useState({ num: 0, op: "+", res: 0 });
@@ -14,7 +15,9 @@ const Calculator = () => {
           <div>{ Buttons(context, [4, 5, 6, '-']) }</div>
           <div>{ Buttons(context, [7, 8, 9, '*']) }</div>
           <div>
-            <button onClick = { reset }> C </button>
+            <button
+              style = { buttonStyle }
+              onClick = { reset }> C </button>
             { Buttons(context, [0, '%', '/']) }
           </div>
         </div>

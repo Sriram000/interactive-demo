@@ -1,7 +1,10 @@
 import ops from '../services/operations';
+import { buttonStyle } from './styles';
 
 const OperatorButton = ({ state, setState }, op) =>
-    <button onClick={ () => setState({
+    <button
+    style={ buttonStyle }
+    onClick={ () => setState({
             res: ops[state.op](state.res, state.num),
             num: 0,
             op: op,
